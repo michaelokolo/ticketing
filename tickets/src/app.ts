@@ -1,7 +1,12 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError } from '@mokolotickets/common';
+import {
+  errorHandler,
+  NotFoundError,
+  currentUser,
+} from '@mokolotickets/common';
+import { createTicketRouter } from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -12,7 +17,9 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   })
 );
+app.use(currentUser);
 
+app.use(createTicketRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new NotFoundError());

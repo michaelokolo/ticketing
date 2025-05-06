@@ -7,7 +7,6 @@ import {
   NotAuthorizedError,
 } from '@mokolotickets/common';
 import { Ticket } from '../models/ticket';
-import { isFunctionDeclaration } from 'typescript';
 
 const router = express.Router();
 

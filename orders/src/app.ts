@@ -6,10 +6,10 @@ import {
   NotFoundError,
   currentUser,
 } from '@mokolotickets/common';
-import { createTicketRouter } from './routes/new';
-import { showTicketRouter } from './routes/show';
-import { indexTicketRouter } from './routes/index';
-import { updateTicketRouter } from './routes/update';
+import { deleteOrderRouter } from './routes/delete';
+import { indexOrderRouter } from './routes/index';
+import { showOrderRouter } from './routes/show';
+import { newOrderRouter } from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -22,10 +22,10 @@ app.use(
 );
 app.use(currentUser);
 
-app.use(createTicketRouter);
-app.use(showTicketRouter);
-app.use(indexTicketRouter);
-app.use(updateTicketRouter);
+app.use(deleteOrderRouter);
+app.use(indexOrderRouter);
+app.use(showOrderRouter);
+app.use(newOrderRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new NotFoundError());

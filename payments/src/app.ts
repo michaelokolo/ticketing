@@ -6,6 +6,7 @@ import {
   NotFoundError,
   currentUser,
 } from '@mokolotickets/common';
+import { createChargeRouter } from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -17,6 +18,7 @@ app.use(
   })
 );
 app.use(currentUser);
+app.use(createChargeRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new NotFoundError());

@@ -16,7 +16,7 @@ const LandingPage = ({ currentUser, tickets }) => {
   });
   return (
     <div className="container py-5">
-      <h1>Tickets</h1>
+      <h2>Tickets</h2>
       <table className="table">
         <thead>
           <tr>

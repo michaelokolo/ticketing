@@ -4,8 +4,7 @@ const OrderIndex = ({ orders }) => {
       {orders.map((order) => {
         return (
           <li key={order.id}>
-            {order.ticket.title} - {order.status} -{' '}
-            {new Date(order.expiresAt).toLocaleString()}
+            {order.ticket.title} - {order.status}
             <br />
           </li>
         );
